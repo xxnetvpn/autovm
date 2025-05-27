@@ -51,6 +51,12 @@ resource "google_compute_instance" "ubuntu_vm" {
   #  #!/bin/bash
   #  echo "Ubuntu 22.04 VM is up" > /var/log/startup.log
   #EOT
+
+  metadata = {
+    enable-oslogin = "TRUE"
+    PORTS          = var.ssh_ports
+  }
+
 }
 
 # 创建防火墙规则：允许所有入站流量
