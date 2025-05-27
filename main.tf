@@ -16,5 +16,5 @@ data "google_compute_image" "my_image" {
 
 output "image_name" {
   description = "Image Name"
-  value       = data.my_image.name
+  value       = data.google_compute_image.my_image.name
 }
