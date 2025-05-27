@@ -9,7 +9,8 @@ provider "google" {
 
 data "google_compute_image" "my_image" {
   most_recent = true
-  family  = "ubuntu"
+  owners = ["Canonical"] # Canonical
+  family  = "Canonical"
 #  #project = "debian-cloud"
   
 }
