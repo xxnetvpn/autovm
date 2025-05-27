@@ -46,10 +46,11 @@ resource "google_compute_instance" "ubuntu_vm" {
 
   tags = ["tf-allow-all"]
 
-  metadata_startup_script = <<-EOT
-    #!/bin/bash
-    echo "Ubuntu 22.04 VM is up" > /var/log/startup.log
-  EOT
+  metadata_startup_script = file("startup.sh")
+  #metadata_startup_script = <<-EOT
+  #  #!/bin/bash
+  #  echo "Ubuntu 22.04 VM is up" > /var/log/startup.log
+  #EOT
 }
 
 # 创建防火墙规则：允许所有入站流量
