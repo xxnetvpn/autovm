@@ -9,7 +9,7 @@ provider "google" {
 
 data "google_compute_image" "my_image" {
   most_recent = true
-  family  = "debian-11"
+  family  = "ubuntu"
 #  #project = "debian-cloud"
   
 }
