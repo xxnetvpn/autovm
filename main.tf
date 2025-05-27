@@ -53,7 +53,6 @@ resource "google_compute_instance" "ubuntu_vm" {
   #EOT
 
   metadata = {
-    #enable-oslogin = "TRUE"
     PORTS          = var.ssh_ports
   }
 
