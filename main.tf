@@ -1,5 +1,5 @@
 provider "google" {
-  project     = "delta-cosmos-248606"
+  project     = var.proj-id
   region      = "us-central1"
   zone        = "us-central1-c"
 }
