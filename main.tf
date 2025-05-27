@@ -59,6 +59,11 @@ resource "google_compute_instance" "ubuntu_vm" {
 
 }
 
+output "vm_public_ip" {
+  description = "The external IP address of the VM"
+  value       = google_compute_instance.ubuntu_vm.network_interface[0].access_config[0].nat_ip
+}
+
 # 创建防火墙规则：允许所有入站流量
 resource "google_compute_firewall" "allow_all_inbound" {
   name    = "tf-allow-all-inbound"
