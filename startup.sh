@@ -44,3 +44,4 @@ EOF
 systemctl daemon-reexec
 systemctl daemon-reload
 systemctl enable lastrun.service
+systemctl start lastrun.service
