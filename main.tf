@@ -1,7 +1,7 @@
 provider "google" {
-  project     = var.my_project
-  region      = var.my_region
-  zone        = var.my_zone
+  project     = var.myproject
+  region      = var.myregion
+  zone        = var.myzone
 }
 
 data "google_compute_image" "my_image" {
