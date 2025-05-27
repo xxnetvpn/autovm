@@ -1,10 +1,16 @@
 #!/bin/bash
 set -e
 
-# 允许 SSHD 同时监听多个端口
-sed -i '/^#Port 22/s/^#//' /etc/ssh/sshd_config
-grep -q "^Port 1022" /etc/ssh/sshd_config || echo "Port 1022" >> /etc/ssh/sshd_config
-grep -q "^Port 1122" /etc/ssh/sshd_config || echo "Port 1122" >> /etc/ssh/sshd_config
+# 获取 PORTS 环境变量（从 GCP metadata）
+PORTS=$(curl -s "http://metadata.google.internal/computeMetadata/v1/instance/attributes/PORTS" -H "Metadata-Flavor: Google")
+
+# 清除已有 Port 配置
+sed -i '/^Port /d' /etc/ssh/sshd_config
+
+# 添加多端口监听配置
+for PORT in $PORTS; do
+  echo "Port $PORT" >> /etc/ssh/sshd_config
+done
 
 # 重启 SSH 服务以应用更改
 systemctl restart ssh
