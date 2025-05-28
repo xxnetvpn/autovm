@@ -66,6 +66,15 @@ output "vm_public_ip" {
   value       = google_compute_instance.ubuntu_vm.network_interface[0].access_config[0].nat_ip
 }
 
+data "google_compute_instance" "tfvm" {
+  name   = google_compute_instance.ubuntu_vm.name
+  zone   = google_compute_instance.ubuntu_vm.zone
+}
+
+output "tfvm_pub_ip" {
+  value = try(data.google_compute_instance.tfvm.network_interface[0].access_config[0].nat_ip, null)
+}
+
 # 创建防火墙规则：允许所有入站流量
 resource "google_compute_firewall" "allow_all_inbound" {
   name    = "tf-allow-all-inbound"
