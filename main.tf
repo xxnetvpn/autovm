@@ -31,6 +31,9 @@ resource "google_compute_instance" "ubuntu_vm" {
   machine_type = "e2-micro"
   zone         = "us-central1-a"
 
+  #desired_status = "TERMINATED"
+  desired_status = "RUNNING"
+
   boot_disk {
     initialize_params {
       image = data.google_compute_image.ubuntu.self_link
