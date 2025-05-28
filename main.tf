@@ -7,17 +7,16 @@ provider "google" {
   #terraform_attribution_label_addition_strategy = "PROACTIVE"
 }
 
-data "google_compute_image" "my_image" {
-  most_recent = true
-  family  = "ubuntu-2204-lts"
-  project = "ubuntu-os-cloud"
-  
-}
+#data "google_compute_image" "my_image" {
+#  most_recent = true
+#  family  = "ubuntu-2204-lts"
+#  project = "ubuntu-os-cloud"
+#}
 
-output "image_name" {
-  description = "Image Name"
-  value       = data.google_compute_image.my_image.name
-}
+#output "image_name" {
+#  description = "Image Name"
+#  value       = data.google_compute_image.my_image.name
+#}
 
 # 获取最新 Ubuntu 22.04 LTS x64 镜像
 data "google_compute_image" "ubuntu" {
@@ -61,10 +60,10 @@ resource "google_compute_instance" "ubuntu_vm" {
 
 }
 
-output "vm_public_ip" {
-  description = "The external IP address of the VM"
-  value       = google_compute_instance.ubuntu_vm.network_interface[0].access_config[0].nat_ip
-}
+#output "vm_public_ip" {
+#  description = "The external IP address of the VM"
+#  value       = google_compute_instance.ubuntu_vm.network_interface[0].access_config[0].nat_ip
+#}
 
 data "google_compute_instance" "tfvm" {
   name   = google_compute_instance.ubuntu_vm.name
