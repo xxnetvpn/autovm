@@ -31,8 +31,8 @@ resource "google_compute_instance" "ubuntu_vm" {
   machine_type = "e2-micro"
   zone         = "us-central1-a"
 
-  #desired_status = "TERMINATED"
-  desired_status = "RUNNING"
+  desired_status = "TERMINATED"
+  #desired_status = "RUNNING"
 
   boot_disk {
     initialize_params {
